@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/spiros3p/angular-frontend-tmf639.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/spiros3p/nodejs-AuthAPI.git
