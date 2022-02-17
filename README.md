@@ -1,7 +1,7 @@
 # Radio-Management-Server-thesis
 ## Summary
 This application has been developed for the purpose of a thesis of an undergraduate student studying at the department of Electrical and Computer Engineering of the University of Patras (UoP).    
-Its purpose is to serve as the front end of a restAPI that serves resources according to the [TMF639](https://www.tmforum.org/resources/specification/tmf639-resource-inventory-management-api-rest-specification-r17-0-1/) model.      
+Its purpose is to serve as the front end of a restAPI that communicates with agents of installed gNodeB (*5G antennas*) and serves them as resources according to the [TMF639](https://www.tmforum.org/resources/specification/tmf639-resource-inventory-management-api-rest-specification-r17-0-1/) model.      
 For that a reason the present Angular application (*/frontend*) along with the present Nodejs restAPI (*/backend*) for authorization have been developed.     
 The below infographic represents the whole system and the green bordered boxes address the applications developed for the purpose of the thesis.
      
