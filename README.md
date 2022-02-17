@@ -47,6 +47,7 @@ by commenting out the desired block of code that defines the `const appRoutes`
 13. Start the NodeJS application on the ***./backend*** directory (*Runs at Port 3000*) 
     - For **Development** RUN `npm run watch` (*to run the app with Nodemon. This will restart the app at every save.*) 
     - For **Production** RUN `node app.js`
-14. **Voila!** You can navigate to [http://localhost:4200/](http://localhost:4200/) and login with the existing user (email:*test@test.com* and pw:*password*) or create a new one
+14. **Voila!** You can navigate to [http://localhost:4200/](http://localhost:4200/) and login with the existing users (*admin* and *test*) or create a new one
+   
 ### Setup using Docker (docker-compose)
 dd
