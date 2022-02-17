@@ -65,9 +65,10 @@ You can edit files and comment out any application you dont want the docker to r
 2. EDIT the same ***./.env*** file (like previously at step **11.**)
    - Define everything like before (*these variables will be used in the mysql docker image to setup the database and also in the nodejs app to connect to the db*)
    - `FRONT_END_IP` depends on whether you are running it on your local machine or remote server. In the case of a remote server you need to use the external IP of the machine there
-3. same like step **3.** before at manual setup
-4. same like step **5.** before at manual setup
+3. Same like step **3.** before at manual setup
+4. Same like step **5.** before at manual setup
 5. RUN the docker-compose file in the root directory:     
    - For **Development** RUN `docker-compose -f docker-compose.yml up --build -d`
    - For **Production** RUN `docker-compose -f docker-compose.prod.yml up --build -d`
-6. make sure you navigate to [http://localhost:5001/](http://localhost:5001/) and copy the table ***./backend/db/tbl_users.sql*** inside the running MySQL application defined `DB_DATABASE`
+6. Make sure you navigate to [http://localhost:5001/](http://localhost:5001/) and copy the table ***./backend/db/tbl_users.sql*** inside the running MySQL application defined `DB_DATABASE`
+7. Voila! The full application is app and running at [http://localhost:4200/](http://localhost:4200/)
