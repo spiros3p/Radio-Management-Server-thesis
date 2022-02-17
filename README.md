@@ -50,4 +50,24 @@ by commenting out the desired block of code that defines the `const appRoutes`
 14. **Voila!** You can navigate to [http://localhost:4200/](http://localhost:4200/) and login with the existing users (*admin* and *test*) or create a new one
    
 ### Setup using Docker (docker-compose)
-dd
+Using docker to run the app will start 5 different containers
+* **Angular app** running at port 4200
+* **JSON-SERVER** (*resources restAPI*) running at port 5000
+* **NodeJS app** (*auth/user restAPI*) running at port 3000
+* **MySQL database** running at defualt port 3306
+* **phpMyAdmin app** running at port 5001     
+
+You can edit files and comment out any application you dont want the docker to run:
+   - For **Development** build ***./docker-compose.yml*** 
+   - For **Production** build ***./docker-compose.prod.yml***
+  
+1. RENAME ***./.env-example*** file to ***./.env***
+2. EDIT the same ***./.env*** file (like previously at step **11.**)
+   - Define everything like before (*these variables will be used in the mysql docker image to setup the database and also in the nodejs app to connect to the db*)
+   - `FRONT_END_IP` depends on whether you are running it on your local machine or remote server. In the case of a remote server you need to use the external IP of the machine there
+3. same like step **3.** before at manual setup
+4. same like step **5.** before at manual setup
+5. RUN the docker-compose file in the root directory:     
+   - For **Development** RUN `docker-compose -f docker-compose.yml up --build -d`
+   - For **Production** RUN `docker-compose -f docker-compose.prod.yml up --build -d`
+6. make sure you navigate to [http://localhost:5001/](http://localhost:5001/) and copy the table ***./backend/db/tbl_users.sql*** inside the running MySQL application defined `DB_DATABASE`
