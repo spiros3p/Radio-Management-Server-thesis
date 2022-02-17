@@ -1,5 +1,15 @@
 # Radio-Management-Server-thesis
 ## Summary
+This application has been developed for the purpose of a thesis of an undergraduate student studying at the department of Electrical and Computer Engineering of the University of Patras (UoP).    
+Its purpose is to serve as the front end of a restAPI that serves resources according to the [TMF639](https://www.tmforum.org/resources/specification/tmf639-resource-inventory-management-api-rest-specification-r17-0-1/) model.      
+For that a reason the present Angular application (*/frontend*) along with the present Nodejs restAPI (*/backend*) for authorization have been developed.     
+The below infographic represents the whole system and the green bordered boxes address the applications developed for the purpose of the thesis.
+     
+![image](https://user-images.githubusercontent.com/16209859/154511757-c43d5fb3-d172-4128-9b9b-db5a79f03e90.png)
+
+The present repository consists of 2 submodules (*repositories*)
+* an Angular Frontend application found [here](https://github.com/spiros3p/angular-frontend-tmf639) 
+* and a NodeJS/authAPI backend application found [here](https://github.com/spiros3p/nodejs-AuthAPI/)     
 
 ## Initialization
 * Download/clone the repository on your local system using the flag --recursive (*to download the content of both submodules*)     
