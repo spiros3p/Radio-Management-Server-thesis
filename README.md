@@ -24,7 +24,7 @@ The present repository consists of 2 submodules (*repositories*)
 #### Angular app - Frontend
 1. Navigate to ***./frontend*** directory
 2. RUN `npm install`
-3. Edit file ***./frontend/src/app/app-routing.module.ts***  
+3. Edit file ***./frontend/src/app/router/app-routing.module.ts***  
 by commenting out the desired block of code that defines the `const appRoutes`     
 `canActivate: [AuthGuard]` protects the routes using an ***authAPI*** server that exists in ***./backend*** directory in this present project.
 4. (*Optional*) RUN `npm run server` on ***./frontend*** directory     
