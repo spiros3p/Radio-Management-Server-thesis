@@ -34,7 +34,8 @@ by commenting out the desired block of code that defines the `const appRoutes`
 5. Edit files 
    - For **Development** build ***./frontend/src/environments/environment.ts*** 
    - For **Production** build ***./frontend/src/environments/environment.prod.ts***    
-     - **Define** the following variables according to your own servers and ports that RUN the server for the Resources (*here JSON-SERVER port 5000*) and the server for the user Authorization/reverse-proxy (*here the nodejs server in the ./backend directory at port 3000*)
+     - **Define** the following variables according to your own servers and ports that RUN the server for the Resources (*here JSON-SERVER port 5000*) and the server for the user Authorization/reverse-proxy (*here the nodejs server in the ./backend directory at port 3000*).
+     - You can still use direct connection between the Front end and the Web Service serving the Resources by filling the apiURL variable or leaving it empty for the Reverse-Proxy to do the job.
 6. Start the Angular application on the ***./frontend*** directory  
    - For **Development** RUN `ng serve` 
    - For **Production** RUN `ng build` ([compiles](https://angular.io/cli/build) the angular app) and drop your build into your own production server
