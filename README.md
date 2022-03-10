@@ -9,7 +9,8 @@ The below infographic represents the whole system and the green bordered boxes a
 
 The present repository consists of 2 submodules (*repositories*)
 * an Angular Frontend application found [here](https://github.com/spiros3p/angular-frontend-tmf639) 
-* and a NodeJS - Express backend application found [here](https://github.com/spiros3p/nodejs-AuthAPI/)     
+* and a NodeJS - Express backend application found [here](https://github.com/spiros3p/nodejs-AuthAPI/)
+* in order to have complete functionality, we use the [JSON-SERVER](https://github.com/typicode/json-server) for a mock REST API server that serves the resources, since developing that backend application was not part of my work.     
 
 ## Initialization
 * Download/clone the repository on your local system using the flag --recursive (*to download the content of both submodules*)     
@@ -28,7 +29,7 @@ The present repository consists of 2 submodules (*repositories*)
 by commenting out the desired block of code that defines the `const appRoutes`     
 `canActivate: [AuthGuard]` protects the routes using  ***./backend*** server of this project.
 4. (*Optional*) RUN `npm run server` on ***./frontend*** directory     
-**Starts** a local [JSON-SERVER](https://github.com/typicode/json-server) (fake RestAPI) at port 5000 that serves your [TMF639](https://www.tmforum.org/resources/specification/tmf639-resource-inventory-management-api-rest-specification-r17-0-1/) Resources.     
+**Starts** a local [JSON-SERVER](https://github.com/typicode/json-server) (fake RestAPI) at port 5000 that serves your [TMF639](https://www.tmforum.org/resources/specification/tmf639-resource-inventory-management-api-rest-specification-r17-0-1/) specification based Resources.     
    - Edit ***./frontend/package.json - line 10*** to change port or uninstall the module.
    - ***./frontend/json-server/db.json*** file contains the dummy Resources that are being served.
 5. Edit files 
