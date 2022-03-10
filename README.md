@@ -9,7 +9,7 @@ The below infographic represents the whole system and the green bordered boxes a
 
 The present repository consists of 2 submodules (*repositories*)
 * an Angular Frontend application found [here](https://github.com/spiros3p/angular-frontend-tmf639) 
-* and a NodeJS/authAPI backend application found [here](https://github.com/spiros3p/nodejs-AuthAPI/)     
+* and a NodeJS - Express backend application found [here](https://github.com/spiros3p/nodejs-AuthAPI/)     
 
 ## Initialization
 * Download/clone the repository on your local system using the flag --recursive (*to download the content of both submodules*)     
