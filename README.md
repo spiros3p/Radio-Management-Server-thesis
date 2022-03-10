@@ -62,7 +62,7 @@ by commenting out the desired block of code that defines the `const appRoutes`
 ### Setup using Docker (docker-compose)
 Using docker to run the app will start 5 different containers
 * **Angular app** running at port 4200
-* **JSON-SERVER** (*resources API*) running at port 5000
+* **JSON-SERVER** (*mock Resources server API*) running at port 5000
 * **NodeJS app** (*auth/user/reverse-proxy API*) running at port 3000
 * **MySQL database** running at defualt port 3306
 * **phpMyAdmin app** running at port 5001     
