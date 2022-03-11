@@ -5,7 +5,7 @@ Its purpose is to serve a front-end application that communicates, through a pro
 For that a reason the present Angular application (*/frontend*) along with the present Nodejs (*/backend*) for authorization and reverse-proxy have been developed.     
 The below infographic represents the whole system and the green bordered boxes address the applications developed for the purpose of the thesis.
      
-![thesis-schematic](https://user-images.githubusercontent.com/16209859/157723069-f5fadf75-236b-4c9d-a1c9-f0d198600eb7.png)
+![thesis-schematic](https://user-images.githubusercontent.com/16209859/157956565-c61d4424-f23c-4b5c-9d6b-385a156ec430.png)
 
 The present repository consists of 2 submodules (*repositories*)
 * an Angular Frontend application found [here](https://github.com/spiros3p/angular-frontend-tmf639) 
