@@ -1,34 +1,41 @@
 version: '3.9' # optional since v1.27.0
 services:
-  thesis-db:
-    image: mysql:5.7
-    restart: unless-stopped
-    ports:
-      - '3306:3306'
-    env_file: ./.env
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
-    volumes:
-      - db_data:/var/lib/mysql
-#     networks:
-#       - mynet
+#   thesis-db:
+#     image: mysql:5.7
+#     restart: unless-stopped
+#     ports:
+#       - '3306:3306'
+#     env_file: ./.env
+#     environment:
+#       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+#       MYSQL_DATABASE: ${DB_DATABASE}
+#     volumes:
+#       - db_data:/var/lib/mysql
+# #     networks:
+# #       - mynet
 
   thesis-frontend:
     build:
       context: frontend
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - '4200:4200'
+    # ports:
+    #   - '4200:4200'
+    expose:
+    - 4200
+    environment:
+      VIRTUAL_HOST: thesis.shishahub.online # the incomming domain name for this site
+      VIRTUAL_PORT: 4200 # the port your applicatio
+      LETSENCRYPT_HOST: thesis.shishahub.online # the domain name to issue cert to
+      LETSENCRYPT_EMAIL: sipmarch7@hotmail.com # th
     volumes:
       - ./frontend/src:/frontend/src
     # networks:
     #   - mynet
 
   thesis-backend:
-    depends_on:
-      - thesis-db
+    # depends_on:
+    #   - thesis-db
     build:
       context: backend
       dockerfile: Dockerfile
@@ -37,29 +44,29 @@ services:
       - '3000:3000'
     env_file: ./.env
     environment:
+      MYSQL_HOST: ${DB_HOST}
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_HOST: thesis-db
       SESSION_SECRET: ${SESSION_SECRET}
       FRONT_END_IP: ${FRONT_END_IP}
       PROXY_IP: ${PROXY_IP}
-    volumes:
-      - ./backend:/backend
+    # volumes:
+    #   - ./backend:/backend
     # networks:
     #   - host
       
-  thesis-phpmyadmin:
-    depends_on:
-      - thesis-db
-    image: phpmyadmin/phpmyadmin
-    restart: unless-stopped
-    ports:
-      - '5001:80'
-    env_file: ./.env
-    environment:
-      PMA_HOST: thesis-db 
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+  # thesis-phpmyadmin:
+  #   depends_on:
+  #     - thesis-db
+  #   image: phpmyadmin/phpmyadmin
+  #   restart: unless-stopped
+  #   ports:
+  #     - '5001:80'
+  #   env_file: ./.env
+  #   environment:
+  #     PMA_HOST: thesis-db 
+  #     MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
 #     networks:
 #       - mynet
 
@@ -75,9 +82,10 @@ services:
     # networks:
     #   - mynet
       
-volumes:
-  db_data: 
-
+networks:
+  default:
+    external:
+      name: nginx-proxy
 # bridge network is the default one 
 # networks:
 #   mynet:
