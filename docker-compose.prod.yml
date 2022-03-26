@@ -26,8 +26,8 @@ services:
     environment:
       VIRTUAL_HOST: thesis.shishahub.online # the incomming domain name for this site
       VIRTUAL_PORT: 4200 # the port your applicatio
-      LETSENCRYPT_HOST: thesis.shishahub.online # the domain name to issue cert to
-      LETSENCRYPT_EMAIL: sipmarch7@hotmail.com # th
+      # LETSENCRYPT_HOST: thesis.shishahub.online # the domain name to issue cert to
+      # LETSENCRYPT_EMAIL: sipmarch7@hotmail.com # th
     volumes:
       - ./frontend/src:/frontend/src
     # networks:
@@ -40,16 +40,10 @@ services:
       context: backend
       dockerfile: Dockerfile
     restart: unless-stopped
-    # ports:
-    #   - '3000:3000'
-    expose:
-    - 3000
+    ports:
+      - '3000:3000'
     env_file: ./.env
     environment:
-      VIRTUAL_HOST: thesis.shishahub.online/auth # the incomming domain name for this site
-      VIRTUAL_PORT: 3000 # the port your applicatio
-      # LETSENCRYPT_HOST: thesis.shishahub.online/api # the domain name to issue cert to
-      # LETSENCRYPT_EMAIL: sipmarch7@hotmail.com # th
       MYSQL_HOST: ${DB_HOST}
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
@@ -80,13 +74,8 @@ services:
     build:
       context: frontend/json-server
       dockerfile: Dockerfile
-    # ports:
-    #   - '5000:5000'
-    expose:
-    - 5000
-    environment:
-      VIRTUAL_HOST: thesis.shishahub.online/api # the incomming domain name for this site
-      VIRTUAL_PORT: 5000 # the port your applicatio
+    ports:
+      - '5000:5000'
     restart: unless-stopped
     volumes:
       - ./frontend/json-server:/json-server
