@@ -12,6 +12,9 @@ The present repository consists of 2 submodules (*repositories*)
 * and a NodeJS - Express backend application found [here](https://github.com/spiros3p/nodejs-AuthAPI/)
 * in order to have complete functionality, we use the [JSON-SERVER](https://github.com/typicode/json-server) for a mock REST API server that serves the resources, since developing that backend application was not part of my work.     
 
+## Documentation
+* For the Angular frontend can be found [here](https://spiros3p.github.io/Radio-Management-Server-thesis-Angular-Documentation/)
+* For the nodejs express backend endpoints can be found [here](https://thesis.speppas.online/rms-api-docs)
 ## Initialization
 * Download/clone the repository on your local system using the flag --recursive (*to download the content of both submodules*)     
 `git clone --recursive https://github.com/spiros3p/Radio-Management-Server-thesis.git`
