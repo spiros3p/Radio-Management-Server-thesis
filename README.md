@@ -8,13 +8,20 @@ The below infographic represents the whole system and the green bordered boxes a
 ![thesis-schematic](https://user-images.githubusercontent.com/16209859/157956565-c61d4424-f23c-4b5c-9d6b-385a156ec430.png)
 
 The present repository consists of 2 submodules (*repositories*)
-* an Angular Frontend application found [here](https://github.com/spiros3p/angular-frontend-tmf639) 
-* and a NodeJS - Express backend application found [here](https://github.com/spiros3p/nodejs-AuthAPI/)
-* in order to have complete functionality, we use the [JSON-SERVER](https://github.com/typicode/json-server) for a mock REST API server that serves the resources, since developing that backend application was not part of my work.     
+* An Angular Frontend single page application found in [github.com/spiros3p/angular-frontend-tmf639](https://github.com/spiros3p/angular-frontend-tmf639) 
+* And a NodeJS/Express backend application found in [github.com/spiros3p/nodejs-AuthAPI](https://github.com/spiros3p/nodejs-AuthAPI/)
+* In order to have complete functionality, we use the [JSON-SERVER](https://github.com/typicode/json-server) for a mock REST API server that serves the resources, since developing that backend application was not part of my work.     
+
+## Live URLs
+* Frontend Angular SPA - [thesis.speppas.online](https://thesis.speppas.online/)
+* Backend auth API - [thesisauth.speppas.online/](https://thesisauth.speppas.online/)
+* Dummy jsonServer (serves dummy resources) - [thesisapi.speppas.online/](https://thesisapi.speppas.online/)
 
 ## Documentation
-* For the Angular frontend can be found [here](https://spiros3p.github.io/Radio-Management-Server-thesis-Angular-Documentation/)
-* For the nodejs express backend endpoints can be found [here](https://thesis.speppas.online/rms-api-docs)
+* For the Angular frontend can be found in this [Github Page](https://spiros3p.github.io/Radio-Management-Server-thesis-Angular-Documentation/)
+* For the nodejs express backend endpoints can be found:
+  - for the TMF-639 Resource Model used in the project (thesisauth.speppas.online/resource-api-docs/)[https://thesisauth.speppas.online/resource-api-docs/]
+  - for the auth API endpoints (thesisauth.speppas.online/rms-api-docs/)[https://thesisauth.speppas.online/rms-api-docs/] 
 ## Initialization
 * Download/clone the repository on your local system using the flag --recursive (*to download the content of both submodules*)     
 `git clone --recursive https://github.com/spiros3p/Radio-Management-Server-thesis.git`
