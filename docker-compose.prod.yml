@@ -1,36 +1,38 @@
 version: '3.9' # optional since v1.27.0
 services:
-#   thesis-db:
-#     image: mysql:5.7
-#     restart: unless-stopped
-#     ports:
-#       - '3306:3306'
-#     env_file: ./.env
-#     environment:
-#       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-#       MYSQL_DATABASE: ${DB_DATABASE}
-#     volumes:
-#       - db_data:/var/lib/mysql
-# #     networks:
-# #       - mynet
+  thesis-db:
+    image: mysql:5.7
+    restart: unless-stopped
+    ports:
+      - '3306:3306'
+    env_file: ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+    volumes:
+      - db_data:/var/lib/mysql
+    # networks:
+    #   - mynet
 
   thesis-frontend:
     build:
       context: frontend
       dockerfile: Dockerfile
+      args:
+        FRONT_PORT: ${FRONT_PORT}
     restart: unless-stopped
     env_file: ./.env
-    # ports:
-    #   - '${FRONT_PORT}:${FRONT_PORT}'
-    expose:
-    - ${FRONT_PORT}
-    environment:
-      VIRTUAL_HOST: ${FRONT_VIRTUAL_HOST} # the incomming domain name for this site
-      VIRTUAL_PORT: ${FRONT_PORT} # the port your applicatio
-      LETSENCRYPT_HOST: ${FRONT_VIRTUAL_HOST} # the domain name to issue cert to
-      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL} #
-    volumes:
-      - ./frontend/src:/frontend/src
+    ports:
+      - '${FRONT_PORT}:${FRONT_PORT}'
+    # expose:
+    # - ${FRONT_PORT}
+    # environment:
+      # VIRTUAL_HOST: ${FRONT_VIRTUAL_HOST} # the incomming domain name for this site
+      # VIRTUAL_PORT: ${FRONT_PORT} # the port your applicatio
+      # LETSENCRYPT_HOST: ${FRONT_VIRTUAL_HOST} # the domain name to issue cert to
+      # LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL} #
+    # volumes:
+    #   - ./frontend/src:/frontend/src
     # networks:
     #   - mynet
 
@@ -40,17 +42,19 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
+      args:
+        AUTH_PORT: ${AUTH_PORT}
     restart: unless-stopped
     env_file: ./.env
-    # ports:
-    #   - '${AUTH_PORT}:${AUTH_PORT}'
-    expose:
-    - ${AUTH_PORT}
+    ports:
+      - '${AUTH_PORT}:${AUTH_PORT}'
+    # expose:
+    # - ${AUTH_PORT}
     environment:
-      VIRTUAL_HOST: ${AUTH_VIRTUAL_HOST} # the incomming domain name for this site
-      VIRTUAL_PORT: ${AUTH_PORT} # the port your applicatio
-      LETSENCRYPT_HOST: ${AUTH_VIRTUAL_HOST} # the domain name to issue cert to
-      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL} # t
+      # VIRTUAL_HOST: ${AUTH_VIRTUAL_HOST} # the incomming domain name for this site
+      # VIRTUAL_PORT: ${AUTH_PORT} # the port your applicatio
+      # LETSENCRYPT_HOST: ${AUTH_VIRTUAL_HOST} # the domain name to issue cert to
+      # LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL} # t
       MYSQL_HOST: ${DB_HOST}
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
@@ -63,44 +67,48 @@ services:
     # networks:
     #   - host
       
-  # thesis-phpmyadmin:
-  #   depends_on:
-  #     - thesis-db
-  #   image: phpmyadmin/phpmyadmin
-  #   restart: unless-stopped
-  #   ports:
-  #     - '5001:80'
-  #   env_file: ./.env
-  #   environment:
-  #     PMA_HOST: thesis-db 
-  #     MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-#     networks:
-#       - mynet
+  thesis-phpmyadmin:
+    depends_on:
+      - thesis-db
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    ports:
+      - '5001:80'
+    env_file: ./.env
+    environment:
+      PMA_HOST: thesis-db 
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    # networks:
+    #   - mynet
 
   thesis-json:
     build:
       context: frontend/json-server
       dockerfile: Dockerfile
     env_file: ./.env
-    # ports:
-    #   - '${API_PORT}:${API_PORT}'
-    expose:
-    - ${API_PORT}
-    environment:
-      VIRTUAL_HOST: ${API_VIRTUAL_HOST} # the incomming domain name for this site
-      VIRTUAL_PORT: ${API_PORT} # the port your applicatio
-      LETSENCRYPT_HOST: ${API_VIRTUAL_HOST} # the domain name to issue cert to
-      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL} # t
+    ports:
+      - '${API_PORT}:${API_PORT}'
+    # expose:
+    # - ${API_PORT}
+    # environment:
+    #   VIRTUAL_HOST: ${API_VIRTUAL_HOST} # the incomming domain name for this site
+    #   VIRTUAL_PORT: ${API_PORT} # the port your applicatio
+    #   LETSENCRYPT_HOST: ${API_VIRTUAL_HOST} # the domain name to issue cert to
+    #   LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL} # t
     restart: unless-stopped
     volumes:
       - ./frontend/json-server:/json-server
     # networks:
     #   - mynet
  
-networks:
-  default:
-    external:
-      name: nginx-proxy
+volumes:
+  db_data: 
+
+
+# networks:
+#   default:
+#     external:
+#       name: nginx-proxy
 # bridge network is the default one 
 # networks:
 #   mynet:
